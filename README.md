@@ -19,5 +19,5 @@ git clone https://github.com/lineeyumi/Python-42.git Python_42_2026
 
 # **Resources**
 What is needed to run this repo:
-*	VSCode or similar;
+*	VSCode or Python supported IDE;
 *	Terminal (WSL or Linux to navigate through the files easier);
