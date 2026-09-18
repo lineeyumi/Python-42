@@ -9,7 +9,7 @@ def garden_intro() -> None:
     print(f"Height: {height}cm")
     print(f"Age: {age} days")
     print()
-    print ("=== End of Program ===")
+    print("=== End of Program ===")
 
 
 if __name__ == "__main__":

@@ -15,6 +15,7 @@ Any questions about this, feel free to contact me.
 *	Open terminal and paste the following line:
 ```
 git clone https://github.com/lineeyumi/Python-42.git Python_42_2026
+cd Python_42_2026
 ```
 
 # **Resources**
