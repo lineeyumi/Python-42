@@ -78,7 +78,7 @@ class Vegetable(Plant):
         self,
         name: str,
         height: float,
-        age:int,
+        age: int,
         harvest: str,
         nutri_value: int,
         growth: int
@@ -96,7 +96,7 @@ class Vegetable(Plant):
 
     def value(self) -> None:
         if self.age < 20:
-            print(f"Nutritional Value: 0")
+            print("Nutritional Value: 0")
         else:
             print(f"Nutritional Value: {self.nutri_value}")
 
