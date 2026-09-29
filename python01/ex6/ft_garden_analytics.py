@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 class Plant():
     name: str
     height: float
@@ -62,7 +63,7 @@ class Flower(Plant):
         height: float,
         plant_age: int,
         color: str,
-        is_blooming: bool
+        is_blooming: bool = False
     ) -> None:
         super().__init__(name, height, plant_age)
         self.color = color
@@ -125,7 +126,7 @@ class Seed(Flower):
         height: float,
         plant_age: int,
         color: str,
-        is_blooming: bool
+        is_blooming: bool = False
     ) -> None:
         super().__init__(name, height, plant_age, color, is_blooming)
         self.seed = 0

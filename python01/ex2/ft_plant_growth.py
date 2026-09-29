@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 class Plant:
     name: str
     height: float
@@ -24,7 +25,7 @@ if __name__ == "__main__":
     rose.show()
     height_start = rose.height
     day = 1
-    while (day >= 1 and day <= 7):
+    while day <= 7:
         print(f"=== Day {day} ===")
         rose.age()
         rose.grow()

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 class Plant:
     _name: str
     _height: float
@@ -19,7 +20,7 @@ class Plant:
             print("Height update rejected")
         else:
             self._height = new_height
-            print(f"Height updated: {self._height}cm")
+            print(f"Height updated: {self._height:.1f}cm")
 
     def get_height(self) -> float:
         return self._height

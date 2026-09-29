@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 class Plant():
     name: str
     height: float
@@ -59,56 +60,51 @@ class Tree(Plant):
         super().__init__(name, height, age)
         self.trunk = trunk
 
-    def show(self) -> None:
-        super().show()
-        print(f" Trunk diameter: {self.trunk}")
-        print(f"[askng the {self.name} to produce shade]")
+    def produce_shade(self) -> None:
+        print(f"[asking the {self.name} to produce shade]")
         print(
             f"Tree {self.name} now produces a shade of {self.height:.1f}cm "
             f"and {self.trunk:.1f}cm wide"
         )
 
+    def show(self) -> None:
+        super().show()
+        print(f" Trunk diameter: {self.trunk}")
+
 
 class Vegetable(Plant):
-    harvest: str
-    nutri_value: int
-    growth: int
+    harvest_season: str
+    nutritional_value: int
 
     def __init__(
         self,
         name: str,
         height: float,
         age: int,
-        harvest: str,
-        nutri_value: int,
-        growth: int
+        harvest: str
     ) -> None:
         super().__init__(name, height, age)
-        self.harvest = harvest
-        self.nutri_value = nutri_value
-        self.growth = growth
+        self.harvest_season = harvest
+        self.nutritional_value = 0
 
-    def veg_growth(self) -> None:
-        new_age = self.age + self.growth
-        new_height = self.height + self.height * 8 + 2
-        self.age = new_age
-        self.height = new_height
+    def grow(self) -> None:
+        self.height += 2.1
+        self.nutritional_value += 1
 
-    def value(self) -> None:
-        if self.age < 20:
-            print("Nutritional Value: 0")
-        else:
-            print(f"Nutritional Value: {self.nutri_value}")
+    def day_age(self) -> None:
+        self.age += 1
+
+    def old(self, days: int) -> None:
+        count = 0
+        while count < days:
+            self.day_age()
+            self.grow()
+            count += 1
 
     def show(self) -> None:
         super().show()
-        print(f"Harvest season: {self.harvest}")
-        self.value()
-        self.veg_growth()
-        print(f"[make {self.name} grow and age for {self.growth} days]")
-        super().show()
-        print(f"Harvest season: {self.harvest}")
-        self.value()
+        print(f" Harvest season: {self.harvest_season}")
+        print(f" Nutritional value: {self.nutritional_value}")
 
 
 if __name__ == "__main__":
@@ -123,7 +119,12 @@ if __name__ == "__main__":
     print("=== Tree")
     oak = Tree("Oak", 200, 365, 5)
     oak.show()
+    oak.produce_shade()
     print()
     print("=== Vegetable")
-    tomato = Vegetable("Tomato", 5, 10, "April", 20, 20)
+    tomato = Vegetable("Tomato", 5, 10, "April")
+    tomato.show()
+    days = 20
+    print(f"[make tomato grow and age for {days} days]")
+    tomato.old(days)
     tomato.show()

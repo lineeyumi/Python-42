@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 class Plant:
     name: str
     height: float
@@ -21,7 +22,7 @@ if __name__ == "__main__":
     print("=== Plant Factory Output ===")
     rose = Plant("Rose", 25, 30)
     oak = Plant("Oak", 200, 365)
-    cactus = Plant("Cactus", 5, 30)
+    cactus = Plant("Cactus", 5, 90)
     sunflower = Plant("Sunflower", 80, 45)
     fern = Plant("Fern", 15, 120)
     rose.show()
