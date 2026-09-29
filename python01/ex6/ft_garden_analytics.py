@@ -3,7 +3,7 @@
 class Plant():
     name: str
     height: float
-    age: int
+    plant_age: int
 
     class Stats:
         count_grow: int
@@ -29,11 +29,11 @@ class Plant():
         self,
         name: str,
         height: float,
-        age: int
+        plant_age: int
     ) -> None:
         self.name = name
         self.height = height
-        self.age = age
+        self.plant_age = plant_age
         self.stats = self.Stats(self.name)
 
     @staticmethod
@@ -44,11 +44,11 @@ class Plant():
             return False
 
     @classmethod
-    def anonymous(cls):
+    def anonymous(cls) -> "Plant":
         return cls("Unknown plant", 0.0, 0)
 
-    def show(self):
-        print(f"{self.name}: {self.height:.1f}cm, {self.age} days old")
+    def show(self) -> None:
+        print(f"{self.name}: {self.height:.1f}cm, {self.plant_age} days old")
         self.stats.count_show += 1
 
 
@@ -60,11 +60,11 @@ class Flower(Plant):
         self,
         name: str,
         height: float,
-        age: int,
+        plant_age: int,
         color: str,
         is_blooming: bool
     ) -> None:
-        super().__init__(name, height, age)
+        super().__init__(name, height, plant_age)
         self.color = color
         self.is_blooming = is_blooming
 
@@ -86,33 +86,34 @@ class Flower(Plant):
 
 class Tree(Plant):
     trunk: int
-    shade: int
+    count_shade: int
 
     def __init__(
         self,
         name: str,
         height: float,
-        age: int,
+        plant_age: int,
         trunk: int
     ) -> None:
-        super().__init__(name, height, age)
+        super().__init__(name, height, plant_age)
         self.trunk = trunk
-        self.shade = 0
+        self.count_shade = 0
 
     def show(self) -> None:
         super().show()
         print(f" Trunk diameter: {self.trunk:.1f} cm")
 
-    def about(self) -> None:
+    def produce_shade(self) -> None:
+        self.count_shade += 1
         print(f"[asking the {self.name} to produce shade]")
         print(
             f"Tree {self.name} now produces a shade of {self.height:.1f}cm "
             f"and {self.trunk:.1f}cm wide"
         )
 
-    def has_shade(self) -> None:
-        print(f" {self.shade} shade")
-        self.shade += 1
+    def show_stats(self) -> None:
+        self.stats.display()
+        print(f"{self.count_shade} shade")
 
 
 class Seed(Flower):
@@ -122,30 +123,30 @@ class Seed(Flower):
         self,
         name: str,
         height: float,
-        age: int,
+        plant_age: int,
         color: str,
-        seed: int,
         is_blooming: bool
     ) -> None:
-        super().__init__(name, height, age, color, is_blooming)
-        self.seed = seed
+        super().__init__(name, height, plant_age, color, is_blooming)
+        self.seed = 0
 
-    def bloom(self):
+    def bloom(self) -> None:
         self.is_blooming = True
+        self.seed = 42
 
-    def show(self):
+    def show(self) -> None:
         super().show()
         if self.is_blooming:
             print(f" Seeds: {self.seed}")
         else:
             print(" Seeds: 0")
 
-    def grow(self):
+    def grow(self) -> None:
         self.height += 30
         self.stats.count_grow += 1
 
-    def older(self):
-        self.age += 20
+    def age(self) -> None:
+        self.plant_age += 20
         self.stats.count_age += 1
 
 
@@ -170,18 +171,16 @@ if __name__ == "__main__":
     print("=== Tree")
     oak = Tree("Oak", 200, 365, 5)
     oak.show()
-    oak.stats.display()
-    oak.has_shade()
-    oak.about()
-    oak.stats.display()
-    oak.has_shade()
+    oak.show_stats()
+    oak.produce_shade()
+    oak.show_stats()
     print()
     print("=== Seed")
-    sunflower = Seed("sunflower", 80, 45, "yellow", 42, False)
+    sunflower = Seed("Sunflower", 80, 45, "yellow", False)
     sunflower.show()
     print("[make sunflower grow, age and bloom]")
     sunflower.grow()
-    sunflower.older()
+    sunflower.age()
     sunflower.bloom()
     sunflower.show()
     sunflower.stats.display()
