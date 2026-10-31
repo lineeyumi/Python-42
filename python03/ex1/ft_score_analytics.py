@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+import sys
+from typing import List
+
+
+def analyze_scores(args: List[str]) -> None:
+    print("=== Player Score Analytics ===")
+
+    scores: List[int] = []
+    i = 1
+    while i < len(args):
+        arg = args[i]
+        try:
+            scores.append(int(arg))
+        except ValueError:
+            print(f"Invalid parameter: '{arg}'")
+        i += 1
+
+    if len(args) == 1 or not scores:
+        print("No scores provided. Usage: python3 ft_score_analytics.py <score1> <score2> ...")
+        return
+
+    total_players = len(scores)
+    total_score = sum(scores)
+    average_score = total_score / total_players
+    high_score = max(scores)
+    low_score = min(scores)
+    score_range = high_score - low_score
+
+    print(f"Scores processed: {scores}")
+    print(f"Total players: {total_players}")
+    print(f"Total score: {total_score}")
+    print(f"Average score: {average_score:.1f}")
+    print(f"High score: {high_score}")
+    print(f"Low score: {low_score}")
+    print(f"Score range: {score_range}")
+
+
+if __name__ == "__main__":
+    analyze_scores(sys.argv)
