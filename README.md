@@ -4,7 +4,7 @@
 
 This repository is a compilation of Python project from the Milestone 2 of École 42 São Paulo.
 
-The projects presented here cover the 11 Python lists from the new Common Core (2026), from Python 00 to Python 10, organized to its own list of exercises.
+The projects presented here cover the 11 Python lists from the new Common Core (2026), from Python 00 to Python 6-bis, then Python 9, organized to its own list of exercises.
 
 This folder will be updated as I finish each module.
 
