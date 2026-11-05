@@ -33,7 +33,6 @@ def test_error_types(op: int) -> None:
 
 if __name__ == "__main__":
     print("=== Garden Error Types Demo ===")
-    print()
     test_error_types(0)
     test_error_types(1)
     test_error_types(2)

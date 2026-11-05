@@ -47,6 +47,7 @@ if __name__ == "__main__":
     print("=== Custom Garden Errors Demo ===")
     print()
     test_specific_error(0, "PlantError")
+    print()
     test_specific_error(1, "WaterError")
     print()
     print("Testing catching all garden errors...")

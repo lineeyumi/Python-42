@@ -15,9 +15,9 @@ class PlantError(GardenError):
 
 
 def water_plant(plant_name: str) -> None:
-    if not plant_name.replace(" ", "").istitle() and not plant_name.isupper():
+    if plant_name.capitalize() != plant_name:
         raise PlantError(f"Invalid plant name to water: '{plant_name}'")
-    print(f"Watering {plant_name.capitalize()}: [OK]")
+    print(f"Successfully watered {plant_name}!")
 
 
 def test_watering_system(plants: List[str]) -> None:
@@ -35,13 +35,13 @@ def test_watering_system(plants: List[str]) -> None:
 
 if __name__ == "__main__":
     print("=== Garden Watering System ===")
-
+    print()
     print("Testing valid plants...")
     valid_batch = ["Tomato", "Lettuce", "Carrots"]
     test_watering_system(valid_batch)
-
+    print()
     print("Testing invalid plants...")
     invalid_batch = ["Tomato", "lettuce", "Carrots"]
     test_watering_system(invalid_batch)
-
+    print()
     print("Cleanup always happens, even with errors!")

@@ -20,4 +20,7 @@ def process_arguments(args: List[str]) -> None:
 
 
 if __name__ == "__main__":
-    process_arguments(sys.argv)
+    try:
+        process_arguments(sys.argv)
+    except Exception:
+        pass

@@ -16,28 +16,29 @@ def create_archive(args: List[str]) -> None:
         f = open(filename, "r")
         content = f.read()
         print("---")
+        print()
         print(content, end="")
+        print()
         print("---")
         f.close()
         print(f"File '{filename}' closed.")
+        print()
     except Exception as e:
         print(f"Error opening file '{filename}': {e}")
         return
 
     print("Transform data:")
     print("---")
+    print()
     transformed = ""
     lines = content.splitlines()
-    i = 0
-    while i < len(lines):
-        line = lines[i]
-        if line:
-            line_str = f"{line}#\n"
-            transformed += line_str
-            print(f"{line}#")
-        i += 1
-    print("---")
 
+    for line in lines:
+        line_str = f"{line}#\n"
+        transformed += line_str
+        print(f"{line}#")
+    print()
+    print("---")
     out_file = input("Enter new file name (or empty): ")
     if not out_file:
         print("Not saving data.")

@@ -34,14 +34,11 @@ def manage_streams(args: List[str]) -> None:
     sys.stdout.write("---\n")
     transformed = ""
     lines = content.splitlines()
-    i = 0
-    while i < len(lines):
-        line = lines[i]
-        if line:
-            line_str = f"{line}#\n"
-            transformed += line_str
-            sys.stdout.write(f"{line}#\n")
-        i += 1
+
+    for line in lines:
+        transformed += f"{line}#\n"
+        sys.stdout.write(f"{line}#\n")
+
     sys.stdout.write("---\n")
     sys.stdout.write("Enter new file name (or empty): ")
     sys.stdout.flush()
@@ -56,6 +53,7 @@ def manage_streams(args: List[str]) -> None:
 
     sys.stdout.write(f"Saving data to '{out_file}'\n")
     sys.stdout.flush()
+
     try:
         out = open(out_file, "w")
         out.write(transformed)

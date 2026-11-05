@@ -17,12 +17,13 @@ def recover_text(args: List[str]) -> None:
         try:
             content = f.read()
             print("---")
+            print()
             print(content, end="")
+            print()
             print("---")
-        except Exception as e:
-            print(f"Error reading file '{filename}': {e}")
-        f.close()
-        print(f"File '{filename}' closed.")
+        finally:
+            f.close()
+            print(f"File '{filename}' closed.")
     except Exception as e:
         print(f"Error opening file '{filename}': {e}")
 

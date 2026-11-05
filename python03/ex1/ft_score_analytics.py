@@ -17,7 +17,10 @@ def analyze_scores(args: List[str]) -> None:
         i += 1
 
     if len(args) == 1 or not scores:
-        print("No scores provided. Usage: python3 ft_score_analytics.py <score1> <score2> ...")
+        print(
+            "No scores provided. Usage: "
+            "python3 ft_score_analytics.py <score1> <score2> ..."
+        )
         return
 
     total_players = len(scores)
