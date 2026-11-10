@@ -8,14 +8,14 @@ def load_reagents() -> None:
     missing = False
 
     try:
-        import pandas as pd
+        import pandas as pd  # type: ignore[import-untyped]
         print(f"[OK] pandas ({pd.__version__}) - Data manipulation ready")
     except ImportError:
         print("[MISSING] pandas - Reagent missing!")
         missing = True
 
     try:
-        import numpy as np
+        import numpy as np  # type: ignore[import-not-found]
         print(f"[OK] numpy ({np.__version__}) - Numerical computation ready")
     except ImportError:
         print("[MISSING] numpy - Reagent missing!")
